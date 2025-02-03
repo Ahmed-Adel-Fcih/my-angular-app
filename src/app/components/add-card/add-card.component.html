@@ -1,0 +1,27 @@
+<div class="card-add-container">
+  <h2 class="card-add-title">Add a New Card</h2>
+  <form (ngSubmit)="addCard()" #cardForm="ngForm" class="card-add-form">
+    <div>
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" required>
+    </div>
+    <div>
+      <label for="cardHolder">Card Holder:</label>
+      <input type="text" id="cardHolder" name="cardHolder" [(ngModel)]="cardHolder" required>
+    </div>
+    <div>
+      <label for="expirationDate">Expiration Date:</label>
+      <input type="text" id="expirationDate" name="expirationDate" [(ngModel)]="expirationDate" required placeholder="MM/YY">
+    </div>
+    <div>
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" [(ngModel)]="cvv" required>
+    </div>
+    <button type="submit" class="card-add-button">Add Card</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div class="spinner" id="loadingSpinner"></div>
+</div>

@@ -1,0 +1,31 @@
+<div class="payment-details">
+  <h2>Payment Details</h2>
+  <table *ngIf="paymentDetails">
+    <thead>
+      <tr *ngIf="paymentDetails && paymentDetails.length > 0">
+        <th>Order Description</th>
+        <th>Card Number</th>
+        <th>Amount</th>
+        <th>Timestamp</th>
+        <th>Operation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of paymentDetails">
+        <td>{{ detail.order_description }}</td>
+        <td>{{ detail.card.card_number }}</td>
+        <td>{{ detail.amount / 100 }} {{ detail.currency }}</td>
+        <td>{{ detail.timestamp }}</td>
+        <td>{{ detail.serviceCommand }}</td>
+        <td>
+          <button *ngIf="detail.serviceCommand === 'PURCHASE'" (click)="initiateRefund(detail.merchant_reference)">Refund</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="paymentDetails && paymentDetails.length === 0">
+    <p>No payment details found ...</p>
+  </div>
+  <div *ngIf="isProcessingRefund" class="spinner"></div> <!-- Spinner -->
+</div>

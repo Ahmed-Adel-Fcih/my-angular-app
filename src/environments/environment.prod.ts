@@ -1,0 +1,5 @@
+export const environment = {
+  production: true,
+  apiUrl: 'https://api.example.com', // Replace with your production API URL
+  paymentGatewayKey: 'your-production-key' // Replace with your production payment gateway key
+};

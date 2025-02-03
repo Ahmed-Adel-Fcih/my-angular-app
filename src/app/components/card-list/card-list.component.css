@@ -1,0 +1,119 @@
+.card-list {
+    margin: 20px 0;
+    font-family: 'Amazon Ember', Arial, sans-serif;
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.card-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-number {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-expiry {
+    font-size: 14px;
+    color: #666;
+}
+
+.add-card-button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #ffa41c;
+    border: 1px solid #a88734;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #111;
+}
+
+.add-card-button:hover {
+    background-color: #ff8c00;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.manual-card-fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.manual-card-fields label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.manual-card-fields input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+}
+
+.radio-container input[type="radio"] {
+    margin-right: 10px;
+}
+
+.selected-frame {
+    border: 2px solid #ffa41c;
+    border-radius: 4px;
+    padding: 10px;
+}

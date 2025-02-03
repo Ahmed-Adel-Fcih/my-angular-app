@@ -1,0 +1,46 @@
+<div class="payment-container">
+  <h3>Product Carousel</h3>
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]="true" 
+              [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-product pTemplate="item">
+      <div class="product-item" [ngClass]="{'selected': product.id === selectedProductId}" (click)="selectProduct(product.id)">
+        <div class="product-item-content">
+          <div class="mb-3">
+            <img [src]="product.img" [alt]="product.description" class="product-image" />
+          </div>
+          <div>
+            <h4 class="mb-1">{{product.description}}</h4>
+            <h6 class="mt-0 mb-3">{{product.price | currency:product.currency:'symbol'}}</h6>
+            <div class="radio-container">
+              <input type="radio" [checked]="product.id === selectedProductId" (change)="selectProduct(product.id)">
+              <label>Select</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <h1>Payment Method</h1>
+  <div class="stored-cards">       
+    <app-card-list></app-card-list>
+  </div>
+  <div class="payments-details">       
+    <app-payment-details></app-payment-details>
+  </div>
+  <form ngNoForm method="post" action="https://sbcheckout.payfort.com/FortAPI/paymentPage" id=tokenizationForm name=tokenizationForm class="radio-button-container">
+    <input type="hidden" name="service_command" value="TOKENIZATION">
+    <input type="hidden" name="language" value={{tokenizationRequest.language}}>
+    <input type="hidden" name="merchant_identifier" value={{tokenizationRequest.merchant_identifier}}>
+    <input type="hidden" name="access_code" value={{tokenizationRequest.access_code}}>
+    <input type="hidden" name="signature" value={{tokenizationRequest.signature}}>
+    <input type="hidden" name="return_url" value={{tokenizationRequest.return_url}}>
+    <input type="hidden" name="merchant_reference" value={{tokenizationRequest.merchant_reference}}>
+    <input type="hidden" name="card_number" value={{tokenizationRequest.card_number}}>
+    <input type="hidden" name="expiry_date" value={{tokenizationRequest.expiry_date}}>
+    <input type="hidden" name="card_security_code" value={{tokenizationRequest.card_security_code}}>
+    <input type="hidden" name="card_holder_name" value={{tokenizationRequest.card_holder_name}}>
+    <input type="button" value="Proceed to Payment" id="submit2" class="pay-button" (click)="proceedToPayment()">
+  </form>
+  <div *ngIf="isProcessingPayment" class="spinner"></div> <!-- Spinner -->
+</div>

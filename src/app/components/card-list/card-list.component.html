@@ -1,0 +1,55 @@
+<div class="card-list">
+  <h2>Your Stored Cards</h2>
+  <ul>
+    <li *ngFor="let card of storedCards" [ngClass]="{'selected-frame': selectedCard === card}">
+      <div class="radio-container">
+        <input type="radio" name="selectedCard" (change)="selectCard(card)" [value]="card" [checked]="selectedCard === card">
+        <div class="card-details">
+          <span class="card-number">{{ card.card_number }}</span>
+          <span class="card-expiry">{{ card.expiry_date }}</span>
+          <div *ngIf="selectedCard === card">
+            <label for="cvv">Security Code (CVV/CVC)</label>
+            <input type="text" id="cvv" [(ngModel)]="cvv" (blur)="onInputCvv($event)" placeholder="Enter CVV">
+          </div>
+        </div>
+      </div>
+    </li>
+    <div *ngIf="storedCards && storedCards.length === 0">
+      <p>No stored cards found ...</p>
+    </div>
+  <!--  <li [ngClass]="{'selected-frame': selectedCard === manualCard}">
+      <div class="radio-container">
+        <input type="radio" name="selectedCard" (change)="selectCard(manualCard)" [checked]="selectedCard === manualCard">
+        <div class="card-details">
+          <span>Enter Card Details Manually</span>
+          <div *ngIf="selectedCard === manualCard" class="manual-card-fields">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" [(ngModel)]="manualCard.cardNumber" placeholder="Enter card number">
+            
+            <label for="cardHolder">Card Holder</label>
+            <input type="text" id="cardHolder" [(ngModel)]="manualCard.cardHolder" placeholder="Enter card holder name">
+            
+            <label for="expiry">Expiry Date</label>
+            <input type="text" id="expiry" [(ngModel)]="manualCard.expiry" placeholder="MM/YY">
+            
+            <label for="cvv">Security Code (CVV/CVC)</label>
+            <input type="text" id="cvv" [(ngModel)]="manualCard.cvv" placeholder="Enter CVV">
+            
+            <label>
+              <input type="checkbox" [(ngModel)]="rememberCard"> Remember this card
+            </label>
+          </div>
+        </div>
+      </div>
+    </li>-->
+  </ul>
+  <button (click)="addNewCard()">Add New Card</button>
+</div>
+
+<!-- Add Card Modal -->
+<div id="addCardModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <app-add-card></app-add-card>
+  </div>
+</div>

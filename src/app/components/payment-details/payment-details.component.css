@@ -1,0 +1,22 @@
+.payment-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-details th, .payment-details td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.payment-details th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.payment-details tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.payment-details tr:hover {
+  background-color: #ddd;
+}
