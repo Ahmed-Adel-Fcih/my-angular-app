@@ -60,3 +60,7 @@ Thumbs.db
 /dist
 /tmp
 /out-tsc
+# Add these lines to your existing .gitignore
+node_modules
+dist
+.dockerignore

@@ -13,6 +13,10 @@ import { PaymentDetailsComponent } from './components/payment-details/payment-de
 import { PaymentService } from './services/payment.service';
 import { UserService } from './services/user.service';
 import { BackendService } from './services/backend.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StatusModalComponent } from './components/status-modal/status-modal.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,16 +24,19 @@ import { BackendService } from './services/backend.service';
     PaymentComponent,
     PaymentDetailsComponent,
     CardListComponent,
-    AddCardComponent
+    AddCardComponent,
+    StatusModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
     CarouselModule
   ],
   providers: [PaymentService, UserService, BackendService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StatusModalComponent]
 })
 export class AppModule { }
